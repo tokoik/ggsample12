@@ -24,6 +24,9 @@
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ggsample12.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gg.h">
@@ -32,15 +35,18 @@
     <ClInclude Include="Window.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="GgApplication.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="simple.frag">
+    <None Include="ggsample12.vert">
       <Filter>シェーダー ファイル</Filter>
     </None>
-    <None Include="mirror.vert">
+    <None Include="ggsample12.frag">
       <Filter>シェーダー ファイル</Filter>
     </None>
-    <None Include="simple.vert">
+    <None Include="ggsample12mirror.vert">
       <Filter>シェーダー ファイル</Filter>
     </None>
   </ItemGroup>
