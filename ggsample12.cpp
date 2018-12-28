@@ -88,7 +88,7 @@ void GgApplication::run()
   const GgVector reflected(mr * normalpos);
 
   // ウィンドウが開いている間くり返し描画する
-  while (window.shouldClose() == GL_FALSE)
+  while (window)
   {
     // 画面消去
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -97,31 +97,27 @@ void GgApplication::run()
     const GgMatrix mp(ggPerspective(0.5f, window.getAspect(), 1.0f, 15.0f));
 
     // 鏡像用のシェーダの選択
-    mirror.use();
-    lightBuffer.loadLightPosition(reflected.data());
-    mirror.selectLight(lightBuffer);
+    mirror.use(mp, mv * mm * window.getTrackball(), lightBuffer);
+    lightBuffer.loadPosition(reflected.data());
 
     // 鏡像の描画
-    mirror.selectMaterial(materialBuffer);
-    mirror.loadMatrix(mp, mv * mm * window.getLeftTrackball());
+    materialBuffer.select();
     object->draw();
 
     // 正像用のシェーダの選択
-    shader.use();
-    shader.selectMaterial(materialBuffer);
-    lightBuffer.loadLightPosition(normalpos.data());
-    shader.selectLight(lightBuffer);
+    shader.use(mp, lightBuffer);
+    lightBuffer.loadPosition(normalpos.data());
 
     // 床面の描画
-    shader.selectMaterial(tileBuffer);
-    shader.loadMatrix(mp, mv.rotateX(-1.5707963f));
+    shader.loadModelviewMatrix(mv.rotateX(-1.5707963f));
+    tileBuffer.select();
     glEnable(GL_BLEND);
     rectangle->draw();
     glDisable(GL_BLEND);
 
     // 正像の描画
-    shader.selectMaterial(materialBuffer);
-    shader.loadMatrix(mp, mv * mm * window.getLeftTrackball());
+    shader.loadModelviewMatrix(mv * mm * window.getTrackball());
+    materialBuffer.select();
     object->draw();
 
     // カラーバッファを入れ替えてイベントを取り出す
