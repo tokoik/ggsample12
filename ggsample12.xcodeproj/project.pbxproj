@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D2E6BA015AAAA75003092E8 /* bunny.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7D2E6B9F15AAAA67003092E8 /* bunny.obj */; };
-		7D7AF85F1222C8CC003A0434 /* opengl.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AF85E1222C8CC003A0434 /* opengl.icns */; };
+		7D57106A23F8FE1500856C4B /* gg.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7D57106923F8FE1500856C4B /* gg.icns */; };
 		7D83FE1220C2B9B400E3DEB1 /* ggsample12.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D83FE1120C2B9B400E3DEB1 /* ggsample12.cpp */; };
 		7D83FE1420C2C3BE00E3DEB1 /* bunny.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 7D83FE1320C2C3BE00E3DEB1 /* bunny.mtl */; };
 		7DC2D958150E3AE3007E9256 /* ggsample12.frag in Resources */ = {isa = PBXBuildFile; fileRef = 7DC2D956150E3ADE007E9256 /* ggsample12.frag */; };
@@ -22,8 +22,8 @@
 		7D1E90EE1123E36C005E6C75 /* ggsample12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ggsample12.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D1E90F11123E36C005E6C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D2E6B9F15AAAA67003092E8 /* bunny.obj */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = text; path = bunny.obj; sourceTree = "<group>"; };
-		7D6AA5661EFA18D90062DE79 /* GgApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GgApplication.h; sourceTree = "<group>"; };
-		7D7AF85E1222C8CC003A0434 /* opengl.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = opengl.icns; sourceTree = "<group>"; };
+		7D57106823F8FE0B00856C4B /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		7D57106923F8FE1500856C4B /* gg.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = gg.icns; sourceTree = "<group>"; };
 		7D83FE1120C2B9B400E3DEB1 /* ggsample12.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = ggsample12.cpp; sourceTree = "<group>"; };
 		7D83FE1320C2C3BE00E3DEB1 /* bunny.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; path = bunny.mtl; sourceTree = "<group>"; };
 		7DC2D956150E3ADE007E9256 /* ggsample12.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample12.frag; sourceTree = "<group>"; };
@@ -50,9 +50,9 @@
 			children = (
 				7D83FE1120C2B9B400E3DEB1 /* ggsample12.cpp */,
 				7DC2D967150E3B50007E9256 /* main.cpp */,
-				7DC2D962150E3B36007E9256 /* gg.h */,
+				7D57106823F8FE0B00856C4B /* Window.h */,
 				7DC2D961150E3B36007E9256 /* gg.cpp */,
-				7D6AA5661EFA18D90062DE79 /* GgApplication.h */,
+				7DC2D962150E3B36007E9256 /* gg.h */,
 				7DC2D957150E3ADE007E9256 /* ggsample12.vert */,
 				7DC2D956150E3ADE007E9256 /* ggsample12.frag */,
 				7DED489917883A4C00BF6CD0 /* ggsample12mirror.vert */,
@@ -60,7 +60,7 @@
 				7D83FE1320C2C3BE00E3DEB1 /* bunny.mtl */,
 				7D1E90EF1123E36C005E6C75 /* Products */,
 				7D1E90F11123E36C005E6C75 /* Info.plist */,
-				7D7AF85E1222C8CC003A0434 /* opengl.icns */,
+				7D57106923F8FE1500856C4B /* gg.icns */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,7 +98,7 @@
 		7D1E90DA1123E2F7005E6C75 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1130;
 			};
 			buildConfigurationList = 7D1E90DD1123E2F7005E6C75 /* Build configuration list for PBXProject "ggsample12" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -126,12 +126,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D57106A23F8FE1500856C4B /* gg.icns in Resources */,
 				7D2E6BA015AAAA75003092E8 /* bunny.obj in Resources */,
 				7D83FE1420C2C3BE00E3DEB1 /* bunny.mtl in Resources */,
 				7DC2D958150E3AE3007E9256 /* ggsample12.frag in Resources */,
 				7DC2D959150E3AE3007E9256 /* ggsample12.vert in Resources */,
 				7DED489A17883A4C00BF6CD0 /* ggsample12mirror.vert in Resources */,
-				7D7AF85F1222C8CC003A0434 /* opengl.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +236,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -267,6 +268,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
