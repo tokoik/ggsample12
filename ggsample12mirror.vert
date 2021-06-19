@@ -1,5 +1,4 @@
-#version 150 core
-#extension GL_ARB_explicit_attrib_location : enable
+#version 410 core
 
 // 光源
 layout (std140) uniform Light
