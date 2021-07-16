@@ -1,12 +1,15 @@
-﻿// ウィンドウ関連の処理
-#include "Window.h"
+﻿//
+// ゲームグラフィックス特論宿題アプリケーション
+//
+#include "GgApp.h"
 
-// 標準ライブラリ
-#include <cmath>
-#include <memory>
+// プロジェクト名
+#ifndef PROJECT_NAME
+#  define PROJECT_NAME "ggsample12"
+#endif
 
 // 光源
-const GgSimpleShader::Light light =
+const GgSimpleShader::Light light
 {
   { 0.2f, 0.2f, 0.2f, 1.0f },
   { 1.0f, 1.0f, 1.0f, 1.0f },
@@ -15,7 +18,7 @@ const GgSimpleShader::Light light =
 };
 
 // オブジェクトの材質
-const GgSimpleShader::Material material =
+const GgSimpleShader::Material material
 {
   { 0.7f, 0.5f, 0.5f, 1.0f },
   { 0.7f, 0.5f, 0.5f, 1.0f },
@@ -24,7 +27,7 @@ const GgSimpleShader::Material material =
 };
 
 // 床面の材質
-const GgSimpleShader::Material tile =
+const GgSimpleShader::Material tile
 {
   { 0.8f, 0.8f, 0.8f, 0.4f },
   { 0.8f, 0.8f, 0.8f, 0.4f },
@@ -33,12 +36,12 @@ const GgSimpleShader::Material tile =
 };
 
 //
-// アプリケーションの実行
+// アプリケーション本体
 //
-void app()
+int GgApp::main(int argc, const char* const* argv)
 {
-  // ウィンドウを作成する
-  Window window("ggsample12");
+  // ウィンドウを作成する (この行は変更しないでください)
+  Window window{ argc > 1 ? argv[1] : PROJECT_NAME };
 
   // 背景色を指定する
   glClearColor(0.1f, 0.2f, 0.3f, 0.0f);
@@ -52,40 +55,40 @@ void app()
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
   // 正像用のプログラムオブジェクト
-  GgSimpleShader shader("ggsample12.vert", "ggsample12.frag");
+  GgSimpleShader shader{ PROJECT_NAME ".vert", PROJECT_NAME ".frag" };
 
   // 鏡像用のプログラムオブジェクト
-  GgSimpleShader mirror("ggsample12mirror.vert", "ggsample12.frag");
+  GgSimpleShader mirror{ PROJECT_NAME "mirror.vert", PROJECT_NAME ".frag" };
 
   // 図形の読み込み
-  const std::unique_ptr<const GgElements> object(ggElementsObj("bunny.obj"));
+  const std::unique_ptr<const GgElements> object{ ggElementsObj("bunny.obj") };
 
   // 図形の材質
-  const GgSimpleShader::MaterialBuffer materialBuffer(material);
+  const GgSimpleShader::MaterialBuffer materialBuffer{ material };
 
   // 床面
-  const std::unique_ptr<const GgTriangles> rectangle(ggRectangle(4.0f, 4.0f));
+  const std::unique_ptr<const GgTriangles> rectangle{ ggRectangle(4.0f, 4.0f) };
 
   // 床面の材質
-  const GgSimpleShader::MaterialBuffer tileBuffer(tile);
+  const GgSimpleShader::MaterialBuffer tileBuffer{ tile };
 
   // ビュー変換行列を mv に求める
   const GgMatrix mv(ggLookat(0.0f, 2.0f, 4.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f));
 
   // 図形のモデル変換行列を mm に求める
-  const GgMatrix mm(ggTranslate(0.0f, 0.7f, 0.0f));
+  const auto mm{ ggTranslate(0.0f, 0.7f, 0.0f) };
 
   // 図形の鏡像変換行列を mr に求める
-  const GgMatrix mr(ggScale(1.0f, -1.0f, 1.0f));
+  const auto mr{ ggScale(1.0f, -1.0f, 1.0f) };
 
   // 光源の材質
-  const GgSimpleShader::LightBuffer lightBuffer(light);
+  const GgSimpleShader::LightBuffer lightBuffer{ light };
 
   // 正像のワールド座標系における光源位置
-  const GgVector normalpos(mv * light.position);
+  const auto normalpos{ mv * light.position };
   
   // 鏡像のワールド座標系における光源位置
-  const GgVector reflected(mr * normalpos);
+  const auto reflected{ mr * normalpos };
 
   // ウィンドウが開いている間くり返し描画する
   while (window)
@@ -94,10 +97,10 @@ void app()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // 投影変換行列
-    const GgMatrix mp(ggPerspective(0.5f, window.getAspect(), 1.0f, 15.0f));
+    const auto mp{ ggPerspective(0.5f, window.getAspect(), 1.0f, 15.0f) };
 
     // 鏡像用のシェーダの選択
-    mirror.use(mp, mv * mm * window.getTrackball(), lightBuffer);
+    mirror.use(mp, mv * mm * window.getRotationMatrix(), lightBuffer);
     lightBuffer.loadPosition(reflected.data());
 
     // 鏡像の描画
@@ -116,7 +119,7 @@ void app()
     glDisable(GL_BLEND);
 
     // 正像の描画
-    shader.loadModelviewMatrix(mv * mm * window.getTrackball());
+    shader.loadModelviewMatrix(mv * mm * window.getRotationMatrix());
     materialBuffer.select();
     object->draw();
 
@@ -124,5 +127,5 @@ void app()
     window.swapBuffers();
   }
 
-  return;
+  return 0;
 }
