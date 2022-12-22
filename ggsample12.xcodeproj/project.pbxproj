@@ -11,6 +11,7 @@
 		7D57106A23F8FE1500856C4B /* gg.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7D57106923F8FE1500856C4B /* gg.icns */; };
 		7D83FE1220C2B9B400E3DEB1 /* ggsample12.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D83FE1120C2B9B400E3DEB1 /* ggsample12.cpp */; };
 		7D83FE1420C2C3BE00E3DEB1 /* bunny.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 7D83FE1320C2C3BE00E3DEB1 /* bunny.mtl */; };
+		7DA620D129543BD700849AD5 /* GgApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DA620D029543BD700849AD5 /* GgApp.cpp */; };
 		7DC2D958150E3AE3007E9256 /* ggsample12.frag in Resources */ = {isa = PBXBuildFile; fileRef = 7DC2D956150E3ADE007E9256 /* ggsample12.frag */; };
 		7DC2D959150E3AE3007E9256 /* ggsample12.vert in Resources */ = {isa = PBXBuildFile; fileRef = 7DC2D957150E3ADE007E9256 /* ggsample12.vert */; };
 		7DC2D963150E3B36007E9256 /* gg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DC2D961150E3B36007E9256 /* gg.cpp */; };
@@ -22,10 +23,10 @@
 		7D1E90EE1123E36C005E6C75 /* ggsample12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ggsample12.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D1E90F11123E36C005E6C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D2E6B9F15AAAA67003092E8 /* bunny.obj */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = text; path = bunny.obj; sourceTree = "<group>"; };
-		7D57106823F8FE0B00856C4B /* Window.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Window.h; sourceTree = "<group>"; tabWidth = 2; };
 		7D57106923F8FE1500856C4B /* gg.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = gg.icns; sourceTree = "<group>"; };
 		7D83FE1120C2B9B400E3DEB1 /* ggsample12.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = ggsample12.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		7D83FE1320C2C3BE00E3DEB1 /* bunny.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; path = bunny.mtl; sourceTree = "<group>"; };
+		7DA620D029543BD700849AD5 /* GgApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GgApp.cpp; sourceTree = "<group>"; };
 		7DC2D956150E3ADE007E9256 /* ggsample12.frag */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample12.frag; sourceTree = "<group>"; tabWidth = 2; };
 		7DC2D957150E3ADE007E9256 /* ggsample12.vert */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample12.vert; sourceTree = "<group>"; tabWidth = 2; };
 		7DC2D961150E3B36007E9256 /* gg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = gg.cpp; sourceTree = "<group>"; tabWidth = 2; };
@@ -52,7 +53,7 @@
 				7D83FE1120C2B9B400E3DEB1 /* ggsample12.cpp */,
 				7DC2D967150E3B50007E9256 /* main.cpp */,
 				7DD627DA26CAA04A00C0CA0F /* GgApp.h */,
-				7D57106823F8FE0B00856C4B /* Window.h */,
+				7DA620D029543BD700849AD5 /* GgApp.cpp */,
 				7DC2D962150E3B36007E9256 /* gg.h */,
 				7DC2D961150E3B36007E9256 /* gg.cpp */,
 				7DC2D957150E3ADE007E9256 /* ggsample12.vert */,
@@ -145,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DC2D963150E3B36007E9256 /* gg.cpp in Sources */,
+				7DA620D129543BD700849AD5 /* GgApp.cpp in Sources */,
 				7D83FE1220C2B9B400E3DEB1 /* ggsample12.cpp in Sources */,
 				7DC2D968150E3B50007E9256 /* main.cpp in Sources */,
 			);
