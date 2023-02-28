@@ -61,13 +61,13 @@ int GgApp::main(int argc, const char* const* argv)
   GgSimpleShader mirror{ PROJECT_NAME "mirror.vert", PROJECT_NAME ".frag" };
 
   // 図形の読み込み
-  const std::unique_ptr<const GgElements> object{ ggElementsObj("bunny.obj") };
+  const auto object{ ggElementsObj("bunny.obj") };
 
   // 図形の材質
   const GgSimpleShader::MaterialBuffer materialBuffer{ material };
 
   // 床面
-  const std::unique_ptr<const GgTriangles> rectangle{ ggRectangle(4.0f, 4.0f) };
+  const auto rectangle{ ggRectangle(4.0f, 4.0f) };
 
   // 床面の材質
   const GgSimpleShader::MaterialBuffer tileBuffer{ tile };
